@@ -56,6 +56,24 @@ export const routes: Routes = [
         .then(m => m.SequenceComponent)
   },
   {
+    path: 'game2048',
+    loadComponent: () =>
+      import('./pages/game2048/game2048')
+        .then(m => m.Game2048Component)
+  },
+  {
+    path: 'takuzu',
+    loadComponent: () =>
+      import('./pages/takuzu/takuzu')
+        .then(m => m.TakuzuComponent)
+  },
+  {
+    path: 'simon',
+    loadComponent: () =>
+      import('./pages/simon/simon')
+        .then(m => m.SimonComponent)
+  },
+  {
     path: '**',
     redirectTo: ''
   }

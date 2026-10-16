@@ -1,0 +1,44 @@
+<div class="takuzu-container">
+
+  <h1>⚫⚪ Takuzu</h1>
+
+  <p>
+    Completa el tablero usando los símbolos ⚫ y ⚪.
+    No puede haber más de dos símbolos iguales seguidos,
+    cada fila y columna debe contener la misma cantidad
+    de símbolos y no puede romper las reglas del puzzle.
+  </p>
+
+  <div class="difficulty-selector">
+    <button (click)="startGame(4)">4x4</button>
+    <button (click)="startGame(6)">6x6</button>
+    <button (click)="startGame(8)">8x8</button>
+  </div>
+
+  <div class="board"
+    [style.grid-template-columns]="'repeat(' + boardSize + ', 1fr)'">
+
+    @for(row of board; track $index; let rowIndex = $index){
+
+      @for(cell of row; track $index; let colIndex = $index){
+
+        <button class="cell"
+          [class.fixed]="cell.fixed"
+          [class.invalid]="cell.invalid"
+          (click)="toggleCell(rowIndex,colIndex)">
+            {{ getSymbol(cell.value) }}
+        </button>
+      }
+    }
+  </div>
+
+  @if(completed){
+    <div class="winner">🎉 ¡Takuzu completado!</div>
+  }
+
+  <div class="actions">
+    <button class="restart" (click)="resetGame()">
+      Reiniciar
+    </button>
+  </div>
+</div>

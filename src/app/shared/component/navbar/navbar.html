@@ -52,17 +52,39 @@
       routerLink="/mental-math"
       routerLinkActive="active"
       (click)="closeMenu()">
-      Calculadora Mental
+      Calculadora
     </a>
 
     <a
       routerLink="/sequence"
       routerLinkActive="active"
       (click)="closeMenu()">
-      Secuencias Lógicas
+      Secuencias
     </a>
 
     <a
+      routerLink="/game2048"
+      routerLinkActive="active"
+      (click)="closeMenu()">
+      2048
+    </a>
+
+    <a
+      routerLink="/takuzu"
+      routerLinkActive="active"
+      (click)="closeMenu()">
+      Takuzu
+    </a>
+
+    <a
+      routerLink="/simon"
+      routerLinkActive="active"
+      (click)="closeMenu()">
+      Simon
+    </a>
+
+    <a
+      class="inicio"
       routerLink="/"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"

@@ -1,0 +1,55 @@
+<div class="game2048">
+
+    <h1>🧱 2048</h1>
+
+    <div class="score">Puntuación: {{ score }}</div>
+
+    <div class="board">
+    @for(row of board; track $index){
+
+        @for(cell of row; track $index){
+
+            <div
+                class="tile"
+                [class]="getCellClass(cell)">
+                {{ cell || '' }}
+            </div>
+        }
+    }
+    </div>
+
+    @if(hasWon){
+        <div class="winner">
+            🎉 ¡Has alcanzado 2048!
+        </div>
+    }
+
+    @if(gameOver){
+        <div class="game-over">
+            💀 No quedan movimientos
+        </div>
+    }
+
+    <div class="controls">
+        <button (click)="moveUp()">⬆</button>
+
+        <div class="row">
+            <button (click)="moveLeft()">⬅</button>
+            <button (click)="moveDown()">⬇</button>
+            <button (click)="moveRight()">➡</button>
+        </div>
+    </div>
+
+    <button class="restart" (click)="newGame()">
+        Nueva partida
+    </button>
+
+    <p>
+    Combina fichas con el mismo número para crear valores cada vez más altos.
+    Cada movimiento añade una nueva ficha al tablero, por lo que deberás pensar
+    estratégicamente para no quedarte sin espacio. Tu objetivo es alcanzar la
+    ficha <strong>2048</strong>, aunque podrás seguir jugando para superar tu
+    récord de puntuación.
+    </p>
+
+</div>

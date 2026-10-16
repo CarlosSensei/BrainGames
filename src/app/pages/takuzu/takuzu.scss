@@ -1,0 +1,94 @@
+.takuzu-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+p {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.difficulty-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.difficulty-selector button,
+.restart {
+  padding: .8rem 1.4rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.difficulty-selector button:hover,
+.restart:hover {
+  transform: translateY(-2px);
+}
+
+.board {
+  display: grid;
+  gap: 8px;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.cell:hover {
+  border-color: var(--primary);
+}
+
+.fixed {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.invalid {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.winner {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+
+  .cell {
+    font-size: 1.3rem;
+  }
+
+  .board {
+    gap: 4px;
+  }
+
+}

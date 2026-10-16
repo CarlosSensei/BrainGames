@@ -1,0 +1,70 @@
+<div class="simon-container">
+
+  <h1>🎨 Simon Dice</h1>
+  <p>Memoriza la secuencia de colores y repítela.
+    Cada ronda añade un nuevo color.</p>
+
+  @if(!gameStarted && !gameOver){
+    <button
+      class="start-button"
+      (click)="startGame()">
+        Comenzar
+    </button>
+  }
+
+  <div class="level">Nivel: {{ level }}</div>
+
+  @if(isShowingSequence){
+
+    <p class="status">👀 Observa la secuencia</p>
+  }
+
+  @if(!isShowingSequence && gameStarted){
+
+    <p class="status">👉 Tu turno</p>
+  }
+
+  <div class="board">
+    <button
+      class="color red"
+      [class.active]="activeColor === 'red'"
+      (click)="playerClick('red')">
+    </button>
+
+    <button
+      class="color blue"
+      [class.active]="activeColor === 'blue'"
+      (click)="playerClick('blue')">
+    </button>
+
+    <button
+      class="color green"
+      [class.active]="activeColor === 'green'"
+      (click)="playerClick('green')">
+    </button>
+
+    <button
+      class="color yellow"
+      [class.active]="activeColor === 'yellow'"
+      (click)="playerClick('yellow')">
+    </button>
+  </div>
+
+  @if(gameOver){
+
+    <div class="game-over">
+      💀 Has fallado
+      <p>
+        Nivel alcanzado:
+        <strong>{{ level }}</strong>
+      </p>
+
+      <button
+        class="start-button"
+        (click)="startGame()">
+        Jugar otra vez
+      </button>
+    </div>
+  }
+
+</div>

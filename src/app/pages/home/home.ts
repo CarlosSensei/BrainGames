@@ -72,6 +72,33 @@ export class HomeComponent {
       icon: '📈',
       route: '/sequence',
       available: true
+    },
+    {
+      title: '2048',
+      description: 'Combina números y alcanza la casilla 2048.',
+      icon: '🧱',
+      route: '/game2048',
+      available: true
+    },
+    {
+      title: 'Takuzu',
+      description: 'Completa el tablero sin repetir patrones.',
+      icon: '⚫',
+      route: '/takuzu',
+      available: true
+    },
+    {
+      title: 'Simon Dice',
+      description: 'Memoriza secuencias de colores cada vez más largas.',
+      icon: '🎨',
+      route: '/simon',
+      available: true
+    },
+    {
+      title: 'Número Secreto',
+      description: 'Descubre la combinación oculta usando pistas.',
+      icon: '🎯',
+      route: '/secret-number'
     }
   ];
 
