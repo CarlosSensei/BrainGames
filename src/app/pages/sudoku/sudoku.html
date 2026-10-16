@@ -1,0 +1,23 @@
+<div class="sudoku-board">
+
+  @for(row of board; track $index; let rowIndex = $index){
+
+    @for(cell of row; track $index; let colIndex = $index){
+
+      <input
+        class="cell"
+        [class.fixed]="cell.fixed"
+        [class.invalid]="cell.invalid"
+        [class.selected]="selectedRow === rowIndex && selectedCol === colIndex"
+        [value]="cell.value || ''"
+        [readonly]="cell.fixed"
+        maxlength="1"
+        (click)="selectCell(rowIndex,colIndex)"
+        (input)="updateCell(rowIndex,colIndex,$event)"
+      />
+
+    }
+
+  }
+
+</div>

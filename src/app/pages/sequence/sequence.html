@@ -1,0 +1,40 @@
+<div class="sequence-container">
+
+  <h1>📈 Secuencias Lógicas</h1>
+
+  <p>Encuentra el siguiente elemento de la serie.</p>
+
+  <div class="sequence-card">
+    {{ currentPuzzle.sequence }}
+  </div>
+
+  @if(!solved){
+    <input
+      type="text"
+      [(ngModel)]="userAnswer"
+      placeholder="Tu respuesta">
+
+    <button (click)="checkAnswer()">
+      Comprobar
+    </button>
+  }
+
+  @if(wrongAnswer){
+
+    <div class="error">
+      ❌ Incorrecto
+    </div>
+  }
+
+  @if(solved){
+
+    <div class="success">
+      ✅ Correcto
+    </div>
+
+    <button (click)="newPuzzle()">
+      Siguiente reto
+    </button>
+  }
+
+</div>

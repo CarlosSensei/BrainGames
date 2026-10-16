@@ -1,0 +1,44 @@
+.sudoku-board {
+  padding: 2rem;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(9, 60px);
+  width: fit-content;
+  margin: auto;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.fixed {
+  background: rgba(99,102,241,.15);
+  color: var(--primary);
+}
+
+/* líneas gruesas 3x3 */
+
+.cell:nth-child(3n) {
+  border-right: 2px solid white;
+}
+
+.cell:nth-child(9n + 1) {
+  border-left: 2px solid white;
+}
+
+.invalid {
+  background: rgba(239,68,68,.2);
+  border-color: #ef4444;
+}
+
+.selected {
+  outline: 2px solid var(--primary);
+  z-index: 10;
+}

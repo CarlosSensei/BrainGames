@@ -1,0 +1,58 @@
+<div class="mastermind">
+
+  <h1>🔢 Mastermind</h1>
+
+  <p class="description">Adivina la combinación secreta de 4 números.</p>
+
+  @if(!isWinner && !isGameOver){
+    <div class="input-section">
+      <input
+        type="text"
+        maxlength="4"
+        [(ngModel)]="currentGuess"
+        placeholder="1234">
+
+      <button (click)="submitGuess()">
+        Probar
+      </button>
+    </div>
+  }
+
+  <div class="attempts">
+    @for(attempt of attempts; track $index){
+
+      <div class="attempt-card">
+        <div class="guess">
+          {{ attempt.guess }}
+        </div>
+
+        <div class="result">
+          <span>✅ {{ attempt.correctPosition }}</span>
+          <span>🟡 {{ attempt.correctNumber }}</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if(isWinner){
+    <div class="winner">
+      🎉 ¡Has descubierto la combinación!
+
+      <button (click)="newGame()">
+        Nueva partida
+      </button>
+    </div>
+  }
+
+  @if(!isWinner && isGameOver){
+    <div class="loser">
+      💀 Has agotado los intentos
+
+      <p>Número secreto: <strong>{{ secretNumber }}</strong></p>
+
+      <button (click)="newGame()">
+        Jugar otra vez
+      </button>
+    </div>
+  }
+</div>

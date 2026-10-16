@@ -1,0 +1,60 @@
+<div class="wordle-container">
+
+  <h1>🔤 Wordle</h1>
+
+  <p class="description">Adivina la palabra de 5 letras en 6 intentos.</p>
+
+  @if(!isGameOver){
+    <div class="input-section">
+      <input
+        type="text"
+        maxlength="5"
+        [(ngModel)]="currentWord"
+        placeholder="PALABRA">
+
+      <button (click)="submitGuess()">
+        Probar
+      </button>
+    </div>
+  }
+
+  <div class="board">
+    @for(attempt of attempts; track $index){
+
+      <div class="row">
+        @for(letter of attempt.word.split(''); track $index){
+
+          <div
+            class="cell"
+            [class.correct]="attempt.states[$index] === 'correct'"
+            [class.present]="attempt.states[$index] === 'present'"
+            [class.absent]="attempt.states[$index] === 'absent'">
+            {{ letter }}
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  @if(isWinner){
+    <div class="winner">
+      🎉 ¡Correcto!
+
+      <button (click)="newGame()">
+        Nueva partida
+      </button>
+    </div>
+  }
+
+  @if(!isWinner && attempts.length >= maxAttempts){
+    <div class="loser">
+      💀 Se acabaron los intentos
+
+      <p>La palabra era: <strong>{{ secretWord }}</strong></p>
+
+      <button (click)="newGame()">
+        Intentar otra vez
+      </button>
+    </div>
+  }
+</div>

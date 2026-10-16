@@ -1,0 +1,71 @@
+<div class="memory-container">
+
+  <h1>🧠 Memoria Numérica</h1>
+
+  <p class="subtitle">Memoriza la secuencia y escríbela correctamente.</p>
+
+  @if(!showSequence && level === 1 && !gameOver && sequence === '') {
+
+    <button
+      class="primary-btn"
+      (click)="startGame()">
+      Comenzar
+    </button>
+  }
+
+  @if(showSequence){
+    <div class="sequence-card"> {{ sequence }} </div>
+    <p>Memoriza la secuencia...</p>
+  }
+
+  @if(!showSequence && sequence && !gameOver && !countdownActive){
+    <div class="input-section">
+      <h3>Nivel {{ level }}</h3>
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        placeholder="Introduce la secuencia">
+
+      <button class="primary-btn" (click)="submit()">
+        Validar
+      </button>
+    </div>
+  }
+
+  @if(roundSuccess){
+    <div class="success-message">
+        ✅ Correcto
+    </div>
+  }
+
+  @if(countdownActive) {
+    <div class="countdown-card">
+      <h3>Nivel {{ level }}</h3>
+      <p>La secuencia aparecerá en...</p>
+
+      <div class="countdown-number">
+      {{ countdown }}
+      </div>
+    </div>
+  }
+
+  @if(gameOver){
+    <div class="game-over">
+      <h2>😵 Fin de la partida</h2>
+      <p>
+        Has alcanzado el nivel
+        <strong>{{ level }}</strong>
+      </p>
+      <p>
+        La secuencia correcta era:
+        <strong>{{ sequence }}</strong>
+      </p>
+
+      <button
+        class="primary-btn"
+        (click)="startGame()">
+        Jugar otra vez
+      </button>
+    </div>
+  }
+</div>

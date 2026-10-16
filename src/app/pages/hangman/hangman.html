@@ -1,0 +1,58 @@
+<div class="hangman-container">
+
+  <h1>Ahorcado</h1>
+
+  <div class="status">
+    <span class="lives">
+      ❤️ Vidas: {{ livesRemaining }}
+    </span>
+  </div>
+
+  <div class="word">
+    @for(letter of displayedWord; track $index) {
+
+      <span class="letter">
+        {{ letter }}
+      </span>
+    }
+  </div>
+
+  <div class="keyboard">
+    @for(letter of alphabet(); track letter) {
+
+      <button
+        (click)="guess(letter)"
+        [disabled]="
+          guessedLetters.includes(letter) ||
+          wrongLetters.includes(letter) ||
+          isWinner ||
+          isLoser">
+        {{ letter }}
+      </button>
+    }
+  </div>
+
+  @if(isWinner){
+    <div class="message winner">
+      🎉 ¡Has ganado!
+
+      <button (click)="newGame()">
+        Nueva partida
+      </button>
+    </div>
+  }
+
+  @if(isLoser){
+    <div class="message loser">
+      💀 Has perdido
+
+      <p>La palabra era:</p>
+      <strong>{{ selectedWord }}</strong>
+
+      <button (click)="newGame()">
+        Intentar de nuevo
+      </button>
+    </div>
+  }
+
+</div>

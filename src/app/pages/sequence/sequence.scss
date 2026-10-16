@@ -1,0 +1,50 @@
+.sequence-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.sequence-card {
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+input {
+  width: 300px;
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
+.success {
+  color: #22c55e;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.error {
+  color: #ef4444;
+  margin-top: 1rem;
+}

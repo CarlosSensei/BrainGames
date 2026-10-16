@@ -1,0 +1,36 @@
+<div class="home">
+
+  <section class="hero">
+
+    <span class="badge">
+      Juegos de lógica y agilidad mental
+    </span>
+
+    <h1>Brain Games</h1>
+
+    <p>
+      Entrena tu mente con juegos de números,
+      palabras y lógica.
+    </p>
+
+  </section>
+
+  <section class="games-section">
+
+    <h2>Juegos disponibles</h2>
+
+    <div class="games-grid">
+
+      @for (game of games; track game.title) {
+
+        <app-game-card
+          [game]="game">
+        </app-game-card>
+
+      }
+
+    </div>
+
+  </section>
+
+</div>

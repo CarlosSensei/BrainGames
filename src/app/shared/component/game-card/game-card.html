@@ -1,0 +1,14 @@
+<a class="game-card" [routerLink]="game.route">
+
+  <div class="game-icon"> {{ game.icon }} </div>
+  <h3> {{ game.title }} </h3>
+  <p> {{ game.description }} </p>
+
+  @if(game.available){
+
+    <span class="play-button">Jugar →</span>
+  } @else {
+
+    <span class="coming-soon">Próximamente</span>
+  }
+</a>

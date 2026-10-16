@@ -1,0 +1,115 @@
+.home {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.badge {
+  display: inline-block;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 999px;
+
+  background: rgba(99, 102, 241, 0.15);
+
+  color: var(--primary);
+
+  font-size: 0.9rem;
+
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  margin: 0;
+
+  color: var(--text);
+}
+
+.hero p {
+  max-width: 700px;
+
+  margin: 1.5rem auto 0;
+
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  color: var(--text-secondary);
+}
+
+.games-section {
+  margin-bottom: 6rem;
+}
+
+.games-section h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.games-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  padding: 2rem;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  transition: all 0.25s ease;
+
+  cursor: pointer;
+}
+
+.game-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--primary);
+
+  box-shadow:
+    0 15px 30px rgba(99, 102, 241, 0.2);
+}
+
+.game-card:hover .play-button {
+  transform: translateX(6px);
+}
+
+.game-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.game-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.game-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.play-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--primary);
+  font-weight: 600;
+  transition: transform .2s ease;
+}

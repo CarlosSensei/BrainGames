@@ -1,0 +1,60 @@
+<div class="mental-math">
+
+  <h1>➕ Calculadora Mental</h1>
+
+  @if(!gameStarted && !gameOver){
+
+    <button class="start-btn" (click)="startGame()">
+      Comenzar
+    </button>
+  }
+
+  @if(gameStarted){
+
+    <div class="stats">
+      <div>
+        ⏱ {{ timeLeft }}s
+      </div>
+
+      <div>
+        ⭐ {{ score }} pts
+      </div>
+    </div>
+
+    <div class="problem">
+      {{ num1 }}
+      {{ operator }}
+      {{ num2 }}
+      = ?
+    </div>
+
+    <div class="answer-section">
+      <input
+        type="number"
+        [(ngModel)]="answer"
+        (keyup.enter)="submitAnswer()"
+        placeholder="Respuesta">
+
+      <button (click)="submitAnswer()">
+        Validar
+      </button>
+    </div>
+  }
+
+  @if(gameOver){
+
+    <div class="game-over">
+      <h2>🏁 Tiempo agotado</h2>
+      <p>
+        Puntuación final:
+        <strong>{{ score }}</strong>
+      </p>
+
+      <button
+        class="start-btn"
+        (click)="startGame()">
+        Jugar otra vez
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,34 @@
+<div class="anagram-container">
+  <h1>🔀 Anagramas</h1>
+  <p>Ordena correctamente las letras.</p>
+
+  <div class="word-container">
+    <div class="word">
+      {{ scrambledWord }}
+    </div>
+  </div>
+
+  @if(!solved){
+    <div class="answer-container">
+      <input
+        type="text"
+        [(ngModel)]="answer"
+        placeholder="Tu respuesta">
+
+      <button (click)="checkAnswer()">
+        Comprobar
+      </button>
+    </div>
+  }
+
+  @if(solved){
+    <div class="success">
+      🎉 ¡Correcto!
+    </div>
+
+    <button (click)="newGame()">
+      Siguiente palabra
+    </button>
+  }
+
+</div>
