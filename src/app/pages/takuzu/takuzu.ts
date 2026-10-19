@@ -66,31 +66,17 @@ export class TakuzuComponent {
 
     this.boardSize = size;
 
-    const boardList =
-      this.boards[size as keyof typeof this.boards];
+    const boardList = this.boards[size as keyof typeof this.boards];
+    const randomBoard = boardList[Math.floor(Math.random() * boardList.length)];
 
-    const randomBoard =
-      boardList[
-        Math.floor(Math.random() * boardList.length)
-      ];
+    this.solution = randomBoard.map(row => [...row]);
 
-    this.solution =
-      randomBoard.map(row => [...row]);
-
-    const puzzle =
-      this.createPuzzle(
-        this.solution,
+    const puzzle = this.createPuzzle(this.solution,
         size === 4 ? 0.35 :
-        size === 6 ? 0.45 : 0.55
-      );
+        size === 6 ? 0.45 : 0.55);
 
     this.board = puzzle.map(row =>
-      row.map(cell => ({
-        value: cell,
-        fixed: cell !== null,
-        invalid: false
-      }))
-    );
+      row.map(cell => ({ value: cell, fixed: cell !== null, invalid: false})));
 
     this.completed = false;
 
@@ -101,34 +87,21 @@ export class TakuzuComponent {
     this.startGame(this.boardSize as 4 | 6 | 8);
   }
 
-  createPuzzle(
-    solution: number[][],
-    percentageToHide: number
-  ): (number | null)[][] {
+  createPuzzle(solution: number[][], percentageToHide: number): (number | null)[][] {
 
-    const puzzle =
-      solution.map(row => [...row]);
-
-    const totalCells =
-      this.boardSize * this.boardSize;
-
-    const cellsToHide =
-      Math.floor(totalCells * percentageToHide);
+    const puzzle = solution.map(row => [...row]);
+    const totalCells = this.boardSize * this.boardSize;
+    const cellsToHide = Math.floor(totalCells * percentageToHide);
 
     let removed = 0;
 
     while (removed < cellsToHide) {
 
-      const row =
-        Math.floor(Math.random() * this.boardSize);
-
-      const col =
-        Math.floor(Math.random() * this.boardSize);
+      const row = Math.floor(Math.random() * this.boardSize);
+      const col = Math.floor(Math.random() * this.boardSize);
 
       if (puzzle[row][col] !== null) {
-
         puzzle[row][col] = null;
-
         removed++;
       }
     }
@@ -160,9 +133,7 @@ export class TakuzuComponent {
 
   validateBoard(): void {
 
-    this.board.forEach(row =>
-      row.forEach(cell => cell.invalid = false)
-    );
+    this.board.forEach(row => row.forEach(cell => cell.invalid = false));
 
     this.validateRows();
     this.validateColumns();
@@ -192,26 +163,19 @@ export class TakuzuComponent {
 
     for (let col = 0; col < this.boardSize; col++) {
 
-      const values =
-        this.board.map(row => row[col].value);
-
-      const invalid =
-        this.hasThreeConsecutive(values) ||
+      const values = this.board.map(row => row[col].value);
+      const invalid = this.hasThreeConsecutive(values) ||
         this.exceedsBalance(values);
 
       if (invalid) {
-
         for (let row = 0; row < this.boardSize; row++) {
-
           this.board[row][col].invalid = true;
         }
       }
     }
   }
 
-  hasThreeConsecutive(
-    values: (number | null)[]
-  ): boolean {
+  hasThreeConsecutive(values: (number | null)[]): boolean {
 
     for (let i = 0; i < values.length - 2; i++) {
 
@@ -219,11 +183,7 @@ export class TakuzuComponent {
       const b = values[i + 1];
       const c = values[i + 2];
 
-      if (
-        a !== null &&
-        a === b &&
-        b === c
-      ) {
+      if (a !== null && a === b && b === c) {
         return true;
       }
     }
@@ -231,18 +191,11 @@ export class TakuzuComponent {
     return false;
   }
 
-  exceedsBalance(
-    values: (number | null)[]
-  ): boolean {
+  exceedsBalance(values: (number | null)[]): boolean {
 
-    const max =
-      this.boardSize / 2;
-
-    const zeros =
-      values.filter(v => v === 0).length;
-
-    const ones =
-      values.filter(v => v === 1).length;
+    const max = this.boardSize / 2;
+    const zeros = values.filter(v => v === 0).length;
+    const ones = values.filter(v => v === 1).length;
 
     return zeros > max || ones > max;
   }
@@ -253,10 +206,7 @@ export class TakuzuComponent {
 
       for (let col = 0; col < this.boardSize; col++) {
 
-        if (
-          this.board[row][col].value !==
-          this.solution[row][col]
-        ) {
+        if (this.board[row][col].value !== this.solution[row][col]) {
           this.completed = false;
           return;
         }
@@ -266,9 +216,7 @@ export class TakuzuComponent {
     this.completed = true;
   }
 
-  getSymbol(
-    value: number | null
-  ): string {
+  getSymbol(value: number | null): string {
 
     if (value === 1) {
       return '⚫';

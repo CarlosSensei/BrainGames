@@ -95,11 +95,7 @@ export class SimonComponent {
 
 
     playerClick(color: string): void {
-        if (
-            this.gameOver ||
-            !this.gameStarted ||
-            this.isShowingSequence
-        ) {
+        if (this.gameOver || !this.gameStarted || this.isShowingSequence) {
             return;
         }
 

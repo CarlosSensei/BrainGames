@@ -61,11 +61,7 @@ export class SudokuComponent implements OnInit {
 
     this.completed = false;
     this.board = this.puzzle.map(row =>
-      row.map(cell => ({
-        value: cell,
-        fixed: cell !== 0,
-        invalid: false
-      }))
+      row.map(cell => ({ value: cell, fixed: cell !== 0, invalid: false }))
     );
   }
 
@@ -92,13 +88,9 @@ export class SudokuComponent implements OnInit {
     const number = Number(value);
 
     if (number >= 1 && number <= 9) {
-
       this.board[row][col].value = number;
     } else {
-
-      input.value =
-        this.board[row][col].value === 0
-          ? ''
+      input.value = this.board[row][col].value === 0 ? ''
           : this.board[row][col].value.toString();
     }
 
@@ -109,13 +101,10 @@ export class SudokuComponent implements OnInit {
   validateBoard(): void {
 
     this.board.forEach(row => {
-      row.forEach(cell => {
-        cell.invalid = false;
-      });
+      row.forEach(cell => { cell.invalid = false; });
     });
 
     for (let row = 0; row < 9; row++) {
-
       for (let col = 0; col < 9; col++) {
 
         const value = this.board[row][col].value;
@@ -134,16 +123,11 @@ export class SudokuComponent implements OnInit {
   isValidMove( row: number, col: number, value: number): boolean {
 
     for (let i = 0; i < 9; i++) {
-
-      if (i !== col &&
-        this.board[row][i].value === value
-      ) {
+      if (i !== col && this.board[row][i].value === value) {
         return false;
       }
 
-      if (i !== row &&
-        this.board[i][col].value === value
-      ) {
+      if (i !== row && this.board[i][col].value === value) {
         return false;
       }
     }
@@ -152,13 +136,9 @@ export class SudokuComponent implements OnInit {
     const startCol = Math.floor(col / 3) * 3;
 
     for (let r = startRow; r < startRow + 3; r++) {
-
       for (let c = startCol; c < startCol + 3; c++) {
 
-        if (
-          !(r === row && c === col) &&
-          this.board[r][c].value === value
-        ) {
+        if (!(r === row && c === col) && this.board[r][c].value === value) {
           return false;
         }
       }
@@ -170,13 +150,9 @@ export class SudokuComponent implements OnInit {
   checkCompleted(): void {
 
     for (let row = 0; row < 9; row++) {
-
       for (let col = 0; col < 9; col++) {
 
-        if (
-          this.board[row][col].value !==
-          this.solution[row][col]
-        ) {
+        if (this.board[row][col].value !== this.solution[row][col]) {
           this.completed = false;
           return;
         }

@@ -40,8 +40,7 @@ export class WordleComponent {
 
   newGame(): void {
 
-    this.secretWord =
-      this.words[Math.floor(Math.random() * this.words.length)];
+    this.secretWord = this.words[Math.floor(Math.random() * this.words.length)];
     this.currentWord = '';
     this.attempts = [];
   }
@@ -53,16 +52,12 @@ export class WordleComponent {
       return;
     }
 
-    const states: ('correct' | 'present' | 'absent')[] =
-      Array(5).fill('absent');
-
-    const remainingLetters =
-      this.secretWord.split('');
+    const states: ('correct' | 'present' | 'absent')[] = Array(5).fill('absent');
+    const remainingLetters = this.secretWord.split('');
 
     // Correctas
     for (let i = 0; i < 5; i++) {
       if (guess[i] === this.secretWord[i]) {
-
         states[i] = 'correct';
         remainingLetters[i] = '';
       }
@@ -74,11 +69,9 @@ export class WordleComponent {
         continue;
       }
 
-      const index =
-      remainingLetters.indexOf(guess[i]);
+      const index = remainingLetters.indexOf(guess[i]);
 
       if (index !== -1) {
-
         states[i] = 'present';
         remainingLetters[index] = '';
       }
